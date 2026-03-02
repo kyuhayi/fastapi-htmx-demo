@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FastAPI + htmx Search</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+    <h1>실시간 유저 검색</h1>
+
+    <input type="text" name="search" placeholder="이름이나 이메일 검색..."
+           hx-post="/search"
+           hx-trigger="keyup changed delay:300ms"
+           hx-target="#search-results">
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="search-results">
+            {% include 'user_list.html' %}
+        </tbody>
+    </table>
+</body>
+</html>
